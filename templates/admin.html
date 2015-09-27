@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block head %}
+<script type="text/javascript" src="{{url_for('static', filename='create-discription.js')}}"></script>
+{% endblock %}
+{% block body %}
+
+<form action="{{ url_for('authentication.update') }}" method="POST">
+    <p>
+        <input type="text" name="title" id="title">
+    </p>
+    <p>
+        <textarea rows=30 cols=100 name="content" id="blog-content"></textarea>
+    </p>
+    <p>
+        <input type="text" name="genre">
+    </p>
+    <p>
+        <select name="exist-genre">
+        	<option value="null">null</option>
+        	<option value="test">test</option>
+        </select>
+    </p>
+    <p>
+        <input type="submit" value="create">
+<!--        <input type="button" value="Create" onclick="createHtml()"> !-->
+    </p>
+
+    <input type="file" name="file1" size="30">
+</form>
+    
+<!--    <p>
+        <textarea rows=30 cols=100 name="output" id="output"></textarea>
+    </p>
+    
+    !-->
+    {% endblock %}
+    

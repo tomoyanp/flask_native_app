@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href={{url_for('static', filename='base.css')}}>
+        <link href='http://fonts.googleapis.com/css?family=Oswald:400,700' rel='stylesheet' type='text/css'>
+        <script type="text/javascript" src="{{url_for('static', filename='header.js')}}"></script>
+        <script type="text/javascript" src="{{url_for('static', filename='twitter_timeline.js')}}"></script>
+
+<!--<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>!-->
+
+
+
+        {% block head %}
+        <title> {% block title %}{% endblock %}</title>
+        {% endblock %}
+    </head>
+    
+    <body>
+        <div id="nav">
+        <ul>
+            <li><a href='/'><span>Home</span></a></li>
+            <li><a href='/production'><span>Production and Blog</span></a></li>
+            <li><a onclick="scroll('profile')"><span>Profile</span></a></li>
+            <li><a onclick="scroll('contact')"><span>Contact</span></a></li>
+        </ul>
+        </div>
+
+        <div id="side-bar">
+        <ul class="blog-menu">
+            <li><h3>Blog Menu</h3></li>
+            <li><h4>新着順</h4></li>
+            {% for title in titles %}
+                <li><a href="/production?id={{title.blogid}}">{{ title.title }} - {{ title.blogid }}</a></li>
+            {% endfor %}
+            <li><h4>ジャンル別</h4></li>
+            {% for genre in genres %}
+                <li>{{ genre.genrename }}</li>
+            {% endfor %}
+        </ul>
+
+        </div>
+        <div id="content">
+    
+            <div id="inner-content">
+<!--                <a class="twitter-timeline" href="https://twitter.com/snoopytmy" data-widget-id="625293682179076102">@snoopytmyさんのツイート</a>   !-->
+        
+                {% block body %}
+                {% endblock %}
+            </div>
+        </div>
+    </body>
+</html>

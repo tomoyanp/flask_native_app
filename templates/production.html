@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Tomoyan's Page
+{% endblock %}
+
+
+{% block body %}
+
+<h2>Production and Blog</h2>
+{% for content in contents %}
+<p>{{ content["title"] }}</p>
+{% for row in content["content"] %}
+<p>{{row}}</p>
+{% endfor %}
+{% endfor %}
+
+
+
+{% for message in get_flashed_messages() %}
+  {{ message }}
+{% endfor %}
+{% endblock %}
+
